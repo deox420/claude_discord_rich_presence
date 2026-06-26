@@ -1,0 +1,46 @@
+{
+  "name": "claude-rich-presence",
+  "version": "0.1.0",
+  "description": "Discord Rich Presence para la app de escritorio de Claude (modelo, proyecto/directorio/chat, actividad, tiempo de sesión).",
+  "type": "module",
+  "main": "dist/main.js",
+  "bin": {
+    "claude-rich-presence": "dist/main.js"
+  },
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "start": "tsx src/main.ts",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test --import tsx ./test/*.test.ts"
+  },
+  "keywords": [
+    "discord",
+    "rich-presence",
+    "claude"
+  ],
+  "author": "deox420",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deox420/claude_discord_rich_presence.git"
+  },
+  "bugs": {
+    "url": "https://github.com/deox420/claude_discord_rich_presence/issues"
+  },
+  "homepage": "https://github.com/deox420/claude_discord_rich_presence#readme",
+  "dependencies": {
+    "@xhayper/discord-rpc": "^1.2.1",
+    "chokidar": "^4.0.3",
+    "chrome-remote-interface": "^0.33.3",
+    "systray2": "^2.1.4",
+    "yaml": "^2.7.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/chrome-remote-interface": "^0.31.14",
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

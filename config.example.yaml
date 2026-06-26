@@ -1,0 +1,63 @@
+# Copia este fichero a:  %APPDATA%\claude-rich-presence\config.yaml
+# y rellena discord.clientId con el Application ID de tu app de Discord.
+
+discord:
+  clientId: "PON_AQUI_TU_APPLICATION_ID"
+  appName: "Claude" # aparece como "Jugando a Claude"
+  assets:
+    largeImage: "claude_icon" # clave del asset subido a la app de Discord
+    largeText: "Claude"
+    smallImageByActivity:
+      thinking: "spinner"
+      idle: "idle_dot"
+  buttons: [] # sin botón por defecto; ej: [{ label: "GitHub", url: "https://..." }]
+
+sources:
+  level1: { enabled: true } # logs + OS (siempre)
+  cdp:
+    enabled: false # opcional; en Claude de la Store (MSIX) el flag de depuración no es fiable
+    port: 9222
+    autoRelaunch: true
+
+paths:
+  claudeDataDir: "%APPDATA%\\Claude" # autodetectado
+  webLog: "logs/claude.ai-web.log"
+  mainLog: "logs/main.log"
+
+patterns:
+  model: "claude-(opus|sonnet|haiku)-\\d+-\\d+(?:-\\d+)?"
+  thinkingEvents: "(stream_start|/v1/.*messages|completion)"
+  idleAfterMs: 8000
+
+modelLabels:
+  "claude-opus-4-8": "Opus 4.8"
+  "claude-sonnet-4-6": "Sonnet 4.6"
+  "claude-haiku-4-5": "Haiku 4.5"
+
+templates:
+  details: "{project}" # línea 1
+  state: "{model} · {activity}" # línea 2
+  kindEmoji: # emoji antepuesto según el producto de Claude
+    code: "💻" # Claude Code (local / nube / ssh)
+    cowork: "👥" # Claude Cowork
+    design: "🎨" # Claude Design
+    chat: "💬" # Claude Chat
+  activityLabels:
+    thinking: "Generando…"
+    idle: "Pensando"
+    waiting: "Escribiendo prompt"
+    away: "Ausente"
+
+privacy:
+  showProjectTitle: true
+  fallbackProjectTitle: "En una conversación"
+  fallbackCloudTitle: "En la nube"
+  showDirectory: true
+  showWhenAway: true
+  idleTimeoutMin: 10
+  offlineGraceSec: 30
+
+behavior:
+  autostart: true
+  startMinimizedToTray: true
+  throttleMs: 15000
